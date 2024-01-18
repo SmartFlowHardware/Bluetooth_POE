@@ -521,7 +521,7 @@ void Observer_scan_result_cback( wiced_bt_ble_scan_results_t *p_scan_result, uin
     			   /* Driver identification section */
     			   if(p_scan_result->rssi*(-1) <= RSSI_CLOSER && status_driver == 0)   /* The zero in the if is used to prevent another lamp from being */
     			   {																  		/* entered as a driver in addition to the one that is already there */
-    				   Know_driver(p_scan_result);
+    				   Know_driver(p_scan_result);   /* Function to procces the driver */
     			   }
     			   else if(p_scan_result->rssi*(-1) <= RSSI_DRIVER && status_driver == 1)
     			   {
