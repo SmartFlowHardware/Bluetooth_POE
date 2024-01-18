@@ -31,7 +31,7 @@ void set_outPuts(void)
 	//wiced_hal_gpio_configure_pin( LED_GPIO_00, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW );
 	wiced_hal_gpio_configure_pin( LED_GPIO_01, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW );
 	wiced_hal_gpio_configure_pin( LED_GPIO_02, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW );
-	wiced_hal_gpio_configure_pin( LED_GPIO_03, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW );
+	wiced_hal_gpio_configure_pin( LED_GPIO_03, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW ); /* Risk Zone */
 	wiced_hal_gpio_configure_pin( LED_GPIO_04, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW );
 	wiced_hal_gpio_configure_pin( LED_GPIO_05, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW );
     wiced_hal_gpio_configure_pin( LED_GPIO_06, GPIO_OUTPUT_ENABLE, GPIO_PIN_OUTPUT_LOW);

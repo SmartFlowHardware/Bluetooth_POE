@@ -551,6 +551,61 @@ void process_SOM(uint8_t *data_S_OM)
 
 }
 
+void process_drive(uint8_t *data_drive)
+{
+	memcpy(data_f,data_drive ,3);
+	if(flag_pwd)   /* if the paswword its in */
+	{
+		if(memcmp(data_KDD, data_f,sizeof(data_f)) == 0)  /* KDD, KDU, value driver down */
+		{
+			if( (data_drive[3]-48) >=3 && (data_drive[4]-48) >=0  && (data_drive[4]-48) <=10)
+			{
+				//WICED_BT_TRACE("\n lingitud %d \n",strlen(data_drive[4]));
+				RSSI_CLOSER = 0;
+				RSSI_CLOSER = data_drive[3] - 48;
+				RSSI_CLOSER = (RSSI_CLOSER * 10) + data_drive[4] - 48;
+				//WICED_BT_TRACE("\n RSSI_CLOSER :%d\n",RSSI_CLOSER);
+				data_rssi_driver[0]=RSSI_CLOSER;
+				//WICED_BT_TRACE("\n Texto---> %d \n",data_rssi_driver[0]);
+				//WICED_BT_TRACE("\n Texto---> %d \n",data_rssi_driver[2]);
+				numbytes14 = wiced_hal_write_nvram( WICED_NVRAM_VSID_START+15, sizeof(data_rssi_driver), &data_rssi_driver, &status14 );
+				flag15 = 1;
+				numbytes15 = wiced_hal_write_nvram( WICED_NVRAM_VSID_START+16, sizeof(flag15), &flag15, &status15 );
+				//WICED_BT_TRACE("\n DOWN %d \n", data_rssi_driver[0]);
+			}
+			else
+			{
+				WICED_BT_TRACE("\n No es valido %d\n",RSSI_CLOSER);
+			}
+		}
+		else if(memcmp(dara_KDU,data_f,sizeof(data_f)) == 0) /* value driver up */
+		{
+
+			if( (data_drive[3]-48) >=3 && (data_drive[4]-48) >=0  && (data_drive[4]-48) <=10)
+			{
+				//WICED_BT_TRACE("\n lingitud %d que tiene %d \n",strlen(data_drive[4]),data_drive[4]-48);
+				RSSI_DRIVER = 0;
+				RSSI_DRIVER=data_drive[3] - 48;
+				RSSI_DRIVER = (RSSI_DRIVER * 10) + data_drive[4] - 48;
+				//WICED_BT_TRACE("\n RSSI_DRIVER :%d\n",RSSI_DRIVER);
+				data_rssi_driver[2]=RSSI_DRIVER;
+				//WICED_BT_TRACE("\n Texto---> %d \n",data_rssi_driver[2]);
+				//WICED_BT_TRACE("\n Texto---> %d \n",data_rssi_driver[0]);
+				numbytes14 = wiced_hal_write_nvram( WICED_NVRAM_VSID_START+15, sizeof(data_rssi_driver), &data_rssi_driver, &status14 );
+				flag16 = 1;
+				numbytes16 = wiced_hal_write_nvram( WICED_NVRAM_VSID_START+17, sizeof(flag16), &flag16, &status16 );
+				//WICED_BT_TRACE("\n UP %d \n", data_rssi_driver[2]);
+			}
+			else
+			{
+				WICED_BT_TRACE("\n No es valido %d\n",RSSI_DRIVER);
+			}
+		}
+	}
+	else
+		WICED_BT_TRACE("\n No password \n");
+}
+
 /**************************************************************************
  * Function name: gap_transfer
  * Description:   change of operation mode

@@ -67,6 +67,6 @@ extern void                     config_clk_timers(void);
 
 extern void process_SOM(uint8_t *data_S_OM);
 extern void process_Write(uint8_t *data_Write);
-
+extern void process_drive(uint8_t *data_drive);
 
 #endif /* SF_APP_BLE_STACKS_CORES_GAP_LAYER_APP_H_ */

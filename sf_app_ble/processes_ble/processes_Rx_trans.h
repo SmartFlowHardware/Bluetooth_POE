@@ -38,6 +38,15 @@ uint16_t        numbytes11;
 wiced_result_t  status13;
 uint16_t        numbytes13;
 
+wiced_result_t  status14;     /* Value of the driver keep down */
+uint16_t        numbytes14;
+
+wiced_result_t  status15;     /* flag */
+uint16_t        numbytes15;
+
+wiced_result_t  status16;     /* Flag */
+uint16_t        numbytes16;
+
 uint8_t data_f[3];
 
 
@@ -68,9 +77,13 @@ uint8_t data_f[3];
 #define data_SDB "SDB"
 #define data_SFM "SFM"
 #define data_SRM "SRM"
+#define data_KDD "KDD" /* Value down to take driver */
+#define dara_KDU "KDU" /* Value up to release driver  */
 
 #define BT_LOCAL_NAME_DEFAULT "L4SEC BLE"
 
+extern uint8_t RSSI_CLOSER;
+extern uint8_t RSSI_DRIVER;
 
 uint8_t flag1  = 0;
 uint8_t flag2  = 0;
@@ -81,6 +94,9 @@ uint8_t flag6  = 0;
 uint8_t flag11 = 0;
 uint8_t flag13 = 0;
 uint8_t flag_pwd = 0;
+
+uint8_t flag15 = 0;
+uint8_t flag16 = 0;
 
 uint8_t dla = 0;
 uint8_t dlb = 0;
@@ -93,6 +109,9 @@ unsigned char data_ma_save[12];
 unsigned char data_conver[12];
 unsigned char data_flash[20];
 unsigned char data_rssi_save1[10];
+
+unsigned char data_rssi_driver[4];
+
 uint8_t data_uuid[16];
 uint8_t data_rssi[3];
 uint8_t d_password1[7];

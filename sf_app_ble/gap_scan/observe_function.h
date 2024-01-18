@@ -13,6 +13,9 @@
 	  wiced_timer_t timer_radc;
 	  void        f_timer_radc( uint32_t data );
 
+uint8_t RSSI_CLOSER = 40;
+uint8_t RSSI_DRIVER = 68;
+
 extern	uint8_t dla;
 extern	uint8_t dlb;
 extern	uint8_t dtv;
@@ -25,6 +28,7 @@ int8_t datac_t =0;
 int8_t datac_v =0;
 int8_t datac_t2 =0;
 int8_t datac_v2 =0;
+uint8_t status_driver=0;  /* driver */
 uint8_t dataFiltC[2];
 uint8_t dataFiltCED[2];
 uint8_t dataFiltALV[1];
@@ -258,6 +262,6 @@ extern             void Start_Timerach(void);
 extern             void Stop_Timerach(void);
 extern             void start_TreturnCER(void);
 
-
+extern			   void Know_driver(wiced_bt_ble_scan_results_t *p_scan_result);
 
 #endif /* SF_APP_BLE_GAP_SCAN_OBSERVE_FUNCTION_H_ */

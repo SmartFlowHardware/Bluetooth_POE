@@ -174,6 +174,27 @@ void   init_config_logs(void)
 	     //memcpy(BT_LOCAL_NAME2,BT_LOCAL_NAME_DEFAULT2,10);
 	     //memcpy(BT_LOCAL_NAME2 +10,&Uart_pu8GetTx,sizeof(Uart_pu8GetTx));
 	 }
+
+	 numbytes15 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+16, sizeof(flag15), &flag15, &status15 ); /* char of 4 bytes [0,0,0,0] */
+	 numbytes16 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+17, sizeof(flag16), &flag16, &status16 );
+	 numbytes14 = wiced_hal_read_nvram( WICED_NVRAM_VSID_START+15, sizeof(data_rssi_driver), &data_rssi_driver, &status14 );
+
+	 if(flag15 == 1)
+	 {
+		 //WICED_BT_TRACE("\n -->%d \n",data_rssi_driver[0]);
+		 uint8_t pas1 = data_rssi_driver[0];
+		 WICED_BT_TRACE("\n --> :%d \n",pas1);
+		 RSSI_CLOSER=pas1;
+		 WICED_BT_TRACE("\n **************RSSI_CLOSER :%d\n",RSSI_CLOSER);
+	 }
+	 if(flag16 ==1)
+	 {
+		 //WICED_BT_TRACE("\n -->%d \n",data_rssi_driver[2]);
+		 uint8_t pas2 = data_rssi_driver[2];
+		 WICED_BT_TRACE("\n --> :%d \n",pas2);
+		 RSSI_DRIVER=pas2;
+		 WICED_BT_TRACE("\n **************RRSSI_DRIVER :%d\n",RSSI_DRIVER);
+	 }
 }
 
 /*******************************************************

@@ -18,6 +18,9 @@ extern uint8_t flag5;
 extern uint8_t flag6;
 extern uint8_t flag11;
 
+extern uint8_t flag15; /* D */
+extern uint8_t flag16; /* D */
+
 uint8_t Uart_u8TxBuffer[1];
 uint8_t Adc_value[1];
 
@@ -53,12 +56,24 @@ extern uint16_t        numbytes8;
 extern wiced_result_t  status11;
 extern uint16_t        numbytes11;
 
+extern wiced_result_t  status14;    /* Driver */
+extern uint16_t        numbytes14;  /* Driver */
+
+extern wiced_result_t  status15;    /* Driver */
+extern uint16_t        numbytes15;  /* Driver */
+
+extern wiced_result_t  status16;    /* Driver */
+extern uint16_t        numbytes16;  /* Driver */
+
 wiced_result_t  status12;
 uint16_t        numbytes12;
 
 
 extern uint8_t         BT_LOCAL_NAME2[64];
 
+extern uint8_t RSSI_CLOSER; /* D */
+extern uint8_t RSSI_DRIVER; /* D */
+extern uint8_t data_rssi_driver[4]; /* D */
 
 extern unsigned char data_bn_save[10];
 extern unsigned char data_ma_save[12];
